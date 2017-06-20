@@ -43,11 +43,10 @@ public class FoldableListActivity extends BaseActivity implements MediaPlayer.On
 	}
 
 	private void setup() throws IOException {
-		AssetFileDescriptor afd = getAssets().openFd("song.mp3");
+		AssetFileDescriptor afd = getAssets().openFd("trophies.mp3");
 		mMediaPlayer = new MediaPlayer();
 		mMediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
 		mMediaPlayer.setOnPreparedListener(this);
-		mMediaPlayer.setLooping(true);
 		mMediaPlayer.prepareAsync();
 	}
 
@@ -103,6 +102,7 @@ public class FoldableListActivity extends BaseActivity implements MediaPlayer.On
 
 	@Override
 	public void onPrepared(final MediaPlayer mediaPlayer) {
+		mediaPlayer.setVolume(1.0f, 1.0f);
 		mediaPlayer.start();
 	}
 }

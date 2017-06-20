@@ -17,10 +17,13 @@ import com.alexvasilkov.foldablelayout.sample.utils.GlideHelper;
 
 import java.util.Arrays;
 
-public class PersonAdapter extends ItemsAdapter<Person> implements View.OnClickListener {
+public class PersonAdapter extends ItemsAdapter<Person> {
+
+	private static final int INTRO = 0;
+	private static final int BODY  = 1;
+	private final boolean mIsDetail;
 
 	private Context mContext;
-	private boolean mIsDetail;
 
 	public PersonAdapter(Context context, boolean isDetail) {
 		super(context);
@@ -30,11 +33,24 @@ public class PersonAdapter extends ItemsAdapter<Person> implements View.OnClickL
 	}
 
 	@Override
+	public int getItemViewType(final int position) {
+		if (position == 0) {
+			return INTRO;
+		} else {
+			return BODY;
+		}
+	}
+
+	@Override
+	public int getViewTypeCount() {
+		return 2;
+	}
+
+	@Override
 	protected View createView(Person item, int pos, ViewGroup parent, LayoutInflater inflater) {
 		View view = inflater.inflate(R.layout.list_item, parent, false);
 		ViewHolder vh = new ViewHolder();
 		vh.image = Views.find(view, R.id.list_item_image);
-		vh.image.setOnClickListener(this);
 		vh.title = Views.find(view, R.id.list_item_title);
 		view.setTag(vh);
 
@@ -42,38 +58,39 @@ public class PersonAdapter extends ItemsAdapter<Person> implements View.OnClickL
 	}
 
 	@Override
-	protected void bindView(Person item, int pos, View convertView) {
-		ViewHolder vh = (ViewHolder) convertView.getTag();
+	protected void bindView(Person item, final int pos, View convertView) {
+		ViewHolder holder = (ViewHolder) convertView.getTag();
 
-		if (item != null) {
-
-			if (!mIsDetail) {
-				if (pos == 0) {
+		if (!mIsDetail) {
+			switch (getItemViewType(pos)) {
+				case INTRO:
 					item = new Person(R.drawable.home, "Swipe up", "");
-				} else {
+					break;
+				case BODY:
 					item = new Person(R.drawable.citytrip2, "Click", "");
+					break;
+			}
+		}
+
+		holder.image.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				if ((v.getContext() instanceof FoldableListActivity) && pos > 0) {
+					Intent intent = new Intent();
+					intent.setComponent(new ComponentName(mContext, "com.alexvasilkov.foldablelayout.sample.activities.UnfoldableDetailsActivity"));
+					mContext.startActivity(intent);
 				}
 			}
+		});
 
+		holder.title.setText(item.getTitle());
 
-			vh.image.setTag(R.id.list_item_image, item);
-			GlideHelper.loadImage(vh.image, item);
-			vh.title.setText(item.getTitle());
-		}
-	}
-
-	@Override
-	public void onClick(View view) {
-		if (view.getContext() instanceof FoldableListActivity) {
-			Intent intent = new Intent();
-			intent.setComponent(new ComponentName(mContext, "com.alexvasilkov.foldablelayout.sample.activities.UnfoldableDetailsActivity"));
-			mContext.startActivity(intent);
-		}
+		holder.image.setTag(R.id.list_item_image, item);
+		GlideHelper.loadImage(holder.image, item);
 	}
 
 	private static class ViewHolder {
 		ImageView image;
 		TextView  title;
 	}
-
 }
