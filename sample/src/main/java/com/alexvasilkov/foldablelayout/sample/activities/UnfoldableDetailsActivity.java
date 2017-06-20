@@ -88,7 +88,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
 		final TextView description = Views.find(detailsLayout, R.id.details_text);
 		final Button confirm = Views.find(detailsLayout, R.id.button);
 
-		GlideHelper.loadPaintingImage(image, person);
+		GlideHelper.loadImage(image, person);
 		title.setText(person.getTitle());
 
 		SpannableBuilder builder = new SpannableBuilder(this);

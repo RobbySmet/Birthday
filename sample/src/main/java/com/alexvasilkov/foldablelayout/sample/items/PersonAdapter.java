@@ -57,7 +57,7 @@ public class PersonAdapter extends ItemsAdapter<Person> implements View.OnClickL
 
 
 			vh.image.setTag(R.id.list_item_image, item);
-			GlideHelper.loadPaintingImage(vh.image, item);
+			GlideHelper.loadImage(vh.image, item);
 			vh.title.setText(item.getTitle());
 		}
 	}
