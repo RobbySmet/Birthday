@@ -13,7 +13,6 @@ import com.alexvasilkov.android.commons.adapters.ItemsAdapter;
 import com.alexvasilkov.android.commons.utils.Views;
 import com.alexvasilkov.foldablelayout.sample.R;
 import com.alexvasilkov.foldablelayout.sample.activities.FoldableListActivity;
-import com.alexvasilkov.foldablelayout.sample.activities.UnfoldableDetailsActivity;
 import com.alexvasilkov.foldablelayout.sample.utils.GlideHelper;
 
 import java.util.Arrays;
@@ -50,7 +49,7 @@ public class PersonAdapter extends ItemsAdapter<Person> implements View.OnClickL
 
 			if (!mIsDetail) {
 				if (pos == 0) {
-					item = new Person(R.drawable.wip, "Swipe up", "");
+					item = new Person(R.drawable.home, "Swipe up", "");
 				} else {
 					item = new Person(R.drawable.citytrip2, "Click", "");
 				}
@@ -65,10 +64,7 @@ public class PersonAdapter extends ItemsAdapter<Person> implements View.OnClickL
 
 	@Override
 	public void onClick(View view) {
-		Person item = (Person) view.getTag(R.id.list_item_image);
-		if (view.getContext() instanceof UnfoldableDetailsActivity) {
-			((UnfoldableDetailsActivity) view.getContext()).openDetails(view, item);
-		} else if (view.getContext() instanceof FoldableListActivity) {
+		if (view.getContext() instanceof FoldableListActivity) {
 			Intent intent = new Intent();
 			intent.setComponent(new ComponentName(mContext, "com.alexvasilkov.foldablelayout.sample.activities.UnfoldableDetailsActivity"));
 			mContext.startActivity(intent);
