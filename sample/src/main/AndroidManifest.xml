@@ -5,8 +5,8 @@
 
     <application
         android:allowBackup="true"
-        android:label="Kimmie"
-        android:icon="@drawable/ic_launcher"
+        android:label="Birthday Arnaud"
+        android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 

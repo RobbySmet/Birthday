@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="names">
+        <item>Tobias</item>
+        <item>Didier &amp; Eva</item>
+        <item>Sarah</item>
+        <item>Jelle</item>
+        <item>Elke</item>
+        <item>Evi</item>
+        <item>Gaetan</item>
+        <item>Lisa</item>
+        <item>Bocky</item>
+        <item>Nick</item>
+        <item>Tineke</item>
+        <item>Torchyto</item>
+        <item>Robby</item>
+    </string-array>
+
+    <string-array name="detail">
+        <item>Tobias</item>
+        <item>Didier &amp; Eva</item>
+        <item>Sarah</item>
+        <item>Jelle</item>
+        <item>Elke</item>
+        <item>Evi</item>
+        <item>Gaetan</item>
+        <item>Lisa</item>
+        <item>Bocky</item>
+        <item>Nick</item>
+        <item>Tineke</item>
+        <item>Torchyto</item>
+        <item>Robby</item>
+    </string-array>
+
+    <array name="images">
+        <item>@drawable/toby</item>
+        <item>@drawable/didi_eva</item>
+        <item>@drawable/sarah</item>
+        <item>@drawable/jelle</item>
+        <item>@drawable/elke</item>
+        <item>@drawable/evi</item>
+        <item>@drawable/gaetan</item>
+        <item>@drawable/lisa</item>
+        <item>@drawable/bocky</item>
+        <item>@drawable/nick</item>
+        <item>@drawable/tineke</item>
+        <item>@drawable/tor</item>
+        <item>@drawable/robby</item>
+    </array>
+
+</resources>

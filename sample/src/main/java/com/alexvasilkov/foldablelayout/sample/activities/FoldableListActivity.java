@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.alexvasilkov.android.commons.utils.Views;
 import com.alexvasilkov.foldablelayout.FoldableListLayout;
 import com.alexvasilkov.foldablelayout.sample.R;
-import com.alexvasilkov.foldablelayout.sample.items.PaintingsAdapter;
+import com.alexvasilkov.foldablelayout.sample.items.PersonAdapter;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class FoldableListActivity extends BaseActivity implements MediaPlayer.On
 		getSupportActionBar().hide();
 
 		FoldableListLayout foldableListLayout = Views.find(this, R.id.foldable_list);
-		foldableListLayout.setAdapter(new PaintingsAdapter(this, false));
+		foldableListLayout.setAdapter(new PersonAdapter(this, false));
 		foldableListLayout.setScrollCallback(new FoldableListLayout.ScrollCallback() {
 			@Override
 			public void startedScrolling() {

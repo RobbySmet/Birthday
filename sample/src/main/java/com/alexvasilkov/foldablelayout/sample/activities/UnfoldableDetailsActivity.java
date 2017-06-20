@@ -15,8 +15,8 @@ import com.alexvasilkov.android.commons.texts.SpannableBuilder;
 import com.alexvasilkov.android.commons.utils.Views;
 import com.alexvasilkov.foldablelayout.UnfoldableView;
 import com.alexvasilkov.foldablelayout.sample.R;
-import com.alexvasilkov.foldablelayout.sample.items.Painting;
-import com.alexvasilkov.foldablelayout.sample.items.PaintingsAdapter;
+import com.alexvasilkov.foldablelayout.sample.items.Person;
+import com.alexvasilkov.foldablelayout.sample.items.PersonAdapter;
 import com.alexvasilkov.foldablelayout.sample.utils.GlideHelper;
 import com.alexvasilkov.foldablelayout.shading.GlanceFoldShading;
 
@@ -31,10 +31,10 @@ public class UnfoldableDetailsActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_unfoldable_details);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		setTitle("Choose a gift!");
+		setTitle("Sponsors");
 
 		ListView listView = Views.find(this, R.id.list_view);
-		listView.setAdapter(new PaintingsAdapter(this, true));
+		listView.setAdapter(new PersonAdapter(this, true));
 
 		listTouchInterceptor = Views.find(this, R.id.touch_interceptor_view);
 		listTouchInterceptor.setClickable(false);
@@ -82,17 +82,17 @@ public class UnfoldableDetailsActivity extends BaseActivity {
 		}
 	}
 
-	public void openDetails(View coverView, final Painting painting) {
+	public void openDetails(View coverView, final Person person) {
 		final ImageView image = Views.find(detailsLayout, R.id.details_image);
 		final TextView title = Views.find(detailsLayout, R.id.details_title);
 		final TextView description = Views.find(detailsLayout, R.id.details_text);
 		final Button confirm = Views.find(detailsLayout, R.id.button);
 
-		GlideHelper.loadPaintingImage(image, painting);
-		title.setText(painting.getTitle());
+		GlideHelper.loadPaintingImage(image, person);
+		title.setText(person.getTitle());
 
 		SpannableBuilder builder = new SpannableBuilder(this);
-		builder.append(painting.getLocation());
+		builder.append(person.getLocation());
 		description.setText(builder.build());
 
 		unfoldableView.unfold(coverView, detailsLayout);
@@ -100,7 +100,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
 		confirm.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(final View view) {
-				sendEmail(painting.getTitle());
+				sendEmail(person.getTitle());
 			}
 		});
 	}
