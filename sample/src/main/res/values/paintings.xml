@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="paintings_titles">
+        <item>Welness</item>
+        <item>Massage</item>
+        <item>Shopping</item>
+        <item>Cardgame</item>
+    </string-array>
+
+    <string-array name="paintings_years">
+        <item>1889</item>
+        <item>1888</item>
+        <item>1888</item>
+        <item>1888</item>
+    </string-array>
+
+    <string-array name="paintings_locations">
+        <item>Samen een dagje luieren in een welness met een cocktail in de hand</item>
+        <item>Samen, maar toch apart, een privé massage krijgen in een welness centrum</item>
+        <item>Dagje shoppen in Gent met een personal shopper die 2u ter onze beschikking staat</item>
+        <item>Laat uw duistere kant de vrije loop met het kaartspel \"Cards against humanity\"</item>
+    </string-array>
+
+    <array name="paintings_images">
+        <item>@drawable/sauna</item>
+        <item>@drawable/massage</item>
+        <item>@drawable/shopping</item>
+        <item>@drawable/cards</item>
+    </array>
+
+</resources>
